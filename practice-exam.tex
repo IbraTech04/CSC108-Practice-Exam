@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,addpoints]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+
+\newcommand{\university}{UNIVERSITY OF IBRA}
+\newcommand{\faculty}{Department of Numeracy, Computation, and Probability}
+\newcommand{\class}{CSC108H5 F}
+\newcommand{\examnum}{(Not) Final Exam}
+\newcommand{\content}{Introduction to Computer Programming}
+\newcommand{\examdate}{2023/11/30}
+\newcommand{\timelimit}{60 Minutes}
+
+\pagestyle{headandfoot}
+\firstpageheader{}{}{}
+\firstpagefooter{}{Page \thepage\ of \numpages}{}
+\runningheader{\class}{\examnum}{\examdate}
+\runningheadrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\begin{document}
+
+\title{\Large \textbf{\university\\ \faculty\\
+\bigskip
+\class -- \examnum \\ \content}}
+\author{Instructors: Themba Dube, Ibrahim Chehab}
+\date{Duration: 1 hour\\ Aids Allowed: God Himself\\ \examdate}
+\maketitle
+\begin{flushleft}
+\makebox[12cm]{\textbf{Name}:\ \hrulefill}
+\medskip
+\makebox[12cm]{\textbf{Student Number}:\ \hrulefill}
+\end{flushleft}
+\noindent \rule{\textwidth}{1pt}
+
+\noindent This exam contains \numpages\ pages (including this cover page) and \numquestions\ questions. Please ensure all pages are present before starting this final examination. 
+
+\begin{center}
+\textbf{Distribution of Marks}\\
+\medskip
+\gradetable[v][questions]
+\end{center}
+
+\clearpage
+
+\section*{Part I: Multiple Choice}
+Answer each question to the best of your abilities. Each question has at most one answer.
+\begin{questions}
+
+
+\question[2] Which of the following is \textbf{not} a valid type in Python?
+    \begin{choices}
+        \choice \texttt{type}
+        \choice \texttt{bytes}
+        \choice \texttt{Set}
+        \choice \texttt{set}
+    \end{choices}
+
+% \end{questions}
+
+% \begin{questions}
+
+\clearpage
+\section*{Part II: Short Answer}
+Answer each question to the best of your abilities. Partial answers $\implies$ partial marks. Breaking any restrictions in the question will result in a mark of 0 for that question.
+\question[10] 
+Let $L$ be a list. We say that $L$ is \textbf{happy} if $L$ is in ascending order and contains at least 2 elements which add up to an arbitrary value $k$. Implement the following method to determine if a list is happy. You may assume that the list is non-empty and contains only integers.
+
+\begin{center}
+    
+    \textbf{RESTRICTIONS:}
+    \begin{itemize}
+        \item You may \textbf{NOT} use \texttt{set}s
+        \item Your method \textbf{MUST} be $\mathcal{O}(n)$ time (i.e. linear time)
+        \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
+    \end{itemize}
+\end{center}
+
+\end{questions}
+
+\clearpage
+This page is intentionally left blank to accommodate work that wouldn't fit elsewhere and/or scratch work.
+\end{document}
