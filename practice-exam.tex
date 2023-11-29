@@ -30,7 +30,7 @@
 \newcommand{\university}{UNIVERSITY OF IBRA}
 \newcommand{\faculty}{Department of Numeracy, Computation, and Probability}
 \newcommand{\class}{CSC108H5 F}
-\newcommand{\examnum}{(Not) Final Exam}
+\newcommand{\examnum}{(Not) Penultimate Exam}
 \newcommand{\content}{Introduction to Computer Programming}
 \newcommand{\examdate}{2023/11/30}
 \newcommand{\timelimit}{60 Minutes}
@@ -159,10 +159,90 @@
         \choice \texttt{[1, 2, 3]}
         \choice \texttt{[1, 2, 3, 4]}
         \choice \texttt{[1, 2, 3, 4, 5]}
-        \choice \texttt{[1, 2, 3, 4, 5, 6]}
         \choice An \texttt{Exception} of some kind is raised
         \choice None of the above
     \end{choices}
+
+    \question[4] \textbf{Code Tracing IV} \\
+    \texttt{Ibra.java} works on a startup called TTBTrackr. Unfortunately, his code was leaked by a rogue employee, ibra.himo. Fortunately for IbraSoft\texttrademark, all their code is obfuscated. Consider the following Python method extracted from the leaked code:
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def mystery(arr: list[int]):
+        n = len(arr)
+        size = 1
+        while size < n:
+            for left in range(0, n - 1, 2 * size):
+                mid = min(left + size - 1, n - 1)
+                right = min(left + 2 * size - 1, n - 1)
+    
+                scooby_doo(arr, left, mid, right)
+            size *= 2
+    
+    
+    def scooby_doo(arr: list[int], a: int, b: int, c: int):
+        i = a
+        j = b + 1
+    
+        while i <= b and j <= c:
+            if arr[i] <= arr[j]:
+                i += 1
+            else:
+                temp = arr[j]
+                for k in range(j, i, -1):
+                    arr[k] = arr[k - 1]
+                arr[i] = temp
+    
+                i += 1
+                b += 1
+                j += 1
+    
+        while j <= c:
+            arr[b + 1] = arr[j]
+            j += 1
+            b += 1    
+    \end{lstlisting}
+    \begin{center}
+        \textit{Question continued on next page}
+    \end{center}
+    \pagebreak
+    \begin{parts}
+        \part[2] Is this a mutating or non-mutating method?
+        \begin{choices}
+            \choice Mutating
+            \choice Non-mutating
+        \end{choices}
+        \part[2] Assume this function is called on the following list: \texttt{[69, 420, 3.14159365, 474, 666]}. What is the output of this function, or the final state of the list? (Depending on your answer to part (a))
+    \begin{choices}
+        \choice \texttt{[69, 420, 3.14159365, 474, 666]}
+        \choice \texttt{[3.14159365, 69, 420, 474, 666]}
+        \choice \texttt{[3.14159365, 69, 420, 474, 666, 69, 420, 474, 666]}
+        \choice{An \texttt{Exception} of some kind is raised}
+        \choice None of the above
+    \end{choices}
+\end{parts}
+
+
+    \question[5] \textbf{Correctness} \\
+    Nugget has developed the following block of Python code:
+    \begin{lstlisting}[language=Python, style=mystyle]
+    import random
+
+    def mystery():
+        a = random.randint(0, 5)
+        b = random.randint(0, 5) / 2
+        if a < b:
+            return a
+        else:
+            return b
+
+    print("The number is " + mystery() + ".")
+    \end{lstlisting}
+    Nugget thinks this code is correct, while UTM Victim argues the code has at least one case where it fails. Who is correct, and why?
+    \begin{choices}
+        \choice Nugget is correct
+        \choice UTM Victim is correct
+    \end{choices}
+    \textbf{Why:} \underline{\hspace{15cm}}
+
 
     %% long answer: 
     \setcounter{question}{0}
