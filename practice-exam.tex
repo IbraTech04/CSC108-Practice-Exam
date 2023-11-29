@@ -1,9 +1,31 @@
 \documentclass[letterpaper,12pt,addpoints]{exam}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
+\usepackage{listings} 
+\usepackage{xcolor}
 \usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry}
 \usepackage{amsmath,amssymb}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
 
 \newcommand{\university}{UNIVERSITY OF IBRA}
 \newcommand{\faculty}{Department of Numeracy, Computation, and Probability}
@@ -22,64 +44,177 @@
 
 \begin{document}
 
-\title{\Large \textbf{\university\\ \faculty\\
-\bigskip
-\class -- \examnum \\ \content}}
-\author{Instructors: Themba Dube, Ibrahim Chehab}
-\date{Duration: 1 hour\\ Aids Allowed: God Himself\\ \examdate}
-\maketitle
-\begin{flushleft}
-\makebox[12cm]{\textbf{Name}:\ \hrulefill}
-\medskip
-\makebox[12cm]{\textbf{Student Number}:\ \hrulefill}
-\end{flushleft}
-\noindent \rule{\textwidth}{1pt}
+    \title{\Large \textbf{\university\\ \faculty\\
+    \bigskip
+    \class -- \examnum \\ \content}}
+    \author{Instructors: Themba Dube, Ibrahim Chehab}
+    \date{Duration: 1 hour\\ Aids Allowed: God Himself\\ \examdate}
+    \maketitle
+    \begin{center}
+    \makebox[12cm]{\textbf{Name}:\ \hrulefill}
+    \medskip
+    \makebox[12cm]{\textbf{Student Number}:\ \hrulefill}
+    \end{center}
 
-\noindent This exam contains \numpages\ pages (including this cover page) and \numquestions\ questions. Please ensure all pages are present before starting this final examination. 
+    % Hey copilot how do I make a square border around text?
+    \begin{center}
+    \fbox{\parbox{6.5in}{\textit{The University of Ibra and you, as a student, share a commitment to academic integrity. You are reminded that you may be charged with an academic offence for possessing any unauthorized aids during the writing of an exam. Clear, sealable, faraday bags have been provided for all mythical devices, including but not limited to: telepathic communication headsets, time machines, polygraph machines, magic wands, Miraculouses, and any other supernatural or futuristic devices that could potentially aid in unfair advantages during examinations. Please turn off all devices, seal them in the bag provided, and place the bag under your desk for the duration of the examination. You will not be able to touch the bag or its contents until the exam is over. If, during an exam, any of these items are found on your person or in the area of your desk other than in the clear, sealable, faraday bag, you may be charged with an academic offence. A typical penalty for an academic offence may cause you to do the hokey-pokey uncontrollably. \\
+    Please note, once this exam has begun, you \textbf{CANNOT} re-write it.}}}
+    \end{center}
 
-\begin{center}
-\textbf{Distribution of Marks}\\
-\medskip
-\gradetable[v][questions]
-\end{center}
+    \bigskip
 
-\clearpage
-
-\section*{Part I: Multiple Choice}
-Answer each question to the best of your abilities. Each question has at most one answer.
-\begin{questions}
+    \noindent \textit{This exam contains \numpages\ pages (including this cover page) and \numquestions\ questions. Please ensure all pages are present before starting this final examination.}
 
 
-\question[2] Which of the following is \textbf{not} a valid type in Python?
+    \clearpage
+
+    \section*{Part I: Multiple Choice}
+    Answer each question to the best of your abilities. Each question has exactly one answer.
+    \begin{questions}
+
+
+    \question[2] \textbf{Python Data Structures} \\
+    Which of the following is \textbf{not} a valid type in Python?
+        \begin{choices}
+            \choice \texttt{type}
+            \choice \texttt{bytes}
+            \choice \texttt{Set}
+            \choice \texttt{set}
+            \choice \texttt{None of the above}
+        \end{choices}
+
+    \question[2] \textbf{Code Tracing I} \\
+    Consider the following Python function: 
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def cursed_funct_junior(i : int) -> int:
+        lst = [0, 0, 1]
+        for _ in range(i):
+            lst.append(lst[-2])
+            lst.append(lst[-2])
+            lst.append(lst[-2] + lst[-1])
+        return lst[-1]
+    \end{lstlisting}
+    What is the value of \texttt{cursed\_funct\_junior(3)}?
     \begin{choices}
-        \choice \texttt{type}
-        \choice \texttt{bytes}
-        \choice \texttt{Set}
-        \choice \texttt{set}
+        \choice 0
+        \choice 1
+        \choice 2
+        \choice 3
     \end{choices}
 
-% \end{questions}
+    \question[2] \textbf{Code Tracing II} \\
+    Consider the following Python function:
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def cursed_funct_1(a: callable, b: callable, c: int, d:int) -> int:
+        if c > d:
+            increment = lambda x: 2*x
+            return a(c//2) + b(d//2)
+        else:
+            increment = lambda x: 4*x
+            return a(c//2) - b(d//2)
 
-% \begin{questions}
+    def increment(x: int) -> int:
+        return x + 1
 
-\clearpage
-\section*{Part II: Short Answer}
-Answer each question to the best of your abilities. Partial answers $\implies$ partial marks. Breaking any restrictions in the question will result in a mark of 0 for that question.
-\question[10] 
-Let $L$ be a list. We say that $L$ is \textbf{happy} if $L$ is in ascending order and contains at least 2 elements which add up to an arbitrary value $k$. Implement the following method to determine if a list is happy. You may assume that the list is non-empty and contains only integers.
+    def decrement(x: int) -> int:
+        return x - 1
 
-\begin{center}
+    def cursed_funct_2(a: callable, b: callable, c: int, d: int):
+        a = cursed_funct_1 if a else increment
+        b = b if a else a
+        return a(b, decrement, c if a else c//2, d)
+
+
+    print(cursed_funct_2(increment, decrement, 7, 10))
+    \end{lstlisting}
+    What is the output of this code? 
+    \begin{choices}
+        \choice -9
+        \choice -2
+        \choice 2
+        \choice An \texttt{Exception} of some kind
+        \choice None of the above
+    \end{choices}
+
+    \question[2] \textbf{Code Tracing III} \\
+    Consider the following Python function which operates on a list:
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def cursed_list_1(a: list, b: list) -> list:
+        if len(a) > len(b):
+            return [x for x in a if x not in b]
+        elif len(a) == len(b):
+            return [x for x in b if x not in a]
+        return []
     
-    \textbf{RESTRICTIONS:}
-    \begin{itemize}
-        \item You may \textbf{NOT} use \texttt{set}s
-        \item Your method \textbf{MUST} be $\mathcal{O}(n)$ time (i.e. linear time)
-        \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
-    \end{itemize}
-\end{center}
+    def cursed_list_2(a: list, b: list) -> list:
+        a = cursed_list_1 if a else [x for x in a if x in b]
+        b = b if a else a
+        return a(b, [x for x in a if x not in b])
+    
+    print(cursed_list_2([1, 2, 3][::-1], [2, 3, 4][:2:-3]))
+    \end{lstlisting}
+    What is the output of this code?
+    \begin{choices}
+        \choice \texttt{[1, 2, 3]}
+        \choice \texttt{[1, 2, 3, 4]}
+        \choice \texttt{[1, 2, 3, 4, 5]}
+        \choice \texttt{[1, 2, 3, 4, 5, 6]}
+        \choice An \texttt{Exception} of some kind is raised
+        \choice None of the above
+    \end{choices}
 
-\end{questions}
+    %% long answer: 
+    \setcounter{question}{0}
+    \clearpage
+    \section*{Part II: Short Answer}
+    Answer each question to the best of your abilities. Partial marks will be awarded for partial answers. 
 
-\clearpage
-This page is intentionally left blank to accommodate work that wouldn't fit elsewhere and/or scratch work.
+    \question[5] 
+
+    \clearpage
+    \section*{Part III: Long Answer}
+    \setcounter{question}{0}
+    Answer each question to the best of your abilities. Partial answers $\implies$ partial marks. Breaking any restrictions in the question will result in a mark of 0.
+    \question[10] \textbf{The Happy List} \\
+    Let $L$ be a list. We say that $L$ is \textbf{happy} if $L$ is in ascending order and contains at least 2 elements which add up to an arbitrary value $k$. Implement the following method to determine if a list is happy. You may assume that the list is non-empty, sorted, and contains only integers.
+
+    \begin{center}
+        
+        \textbf{RESTRICTIONS:}
+        \begin{itemize}
+            \item You may \textbf{NOT} use \texttt{set}s
+            \item Your method \textbf{MUST} be $\mathcal{O}(n)$ time (i.e. linear time)
+            \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
+        \end{itemize}
+    \end{center}
+
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def is_happy(L: list[int], k: int) -> bool:
+        """
+        Given a list, returns whether or not the list is happy.
+        Precondition: L is a list of integers in ascending 
+        order. k is an integer.
+        """
+        # TODO: Implement this method
+    \end{lstlisting}
+
+    \clearpage
+    \question[10] \textbf{The Secret} \\
+    \texttt{Ibra.Java} is hosting a secret MAT102 lecture. This lecture is so secret. that he only tells one student about it. However, his student is 
+
+
+    \end{questions}
+
+    \clearpage
+    \begin{center}
+        \textbf{Rough Work}\\
+        \textit{This page will NOT be marked. You may use this page for rough work.}
+    \end{center}
+
+    \clearpage
+    \begin{center}
+        \textbf{Rough Work}\\
+        \textit{This page will NOT be marked. You may use this page for rough work.}
+    \end{center}
 \end{document}
