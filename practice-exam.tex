@@ -32,8 +32,8 @@
 \newcommand{\class}{CSC108H5 F}
 \newcommand{\examnum}{(Not) Penultimate Exam}
 \newcommand{\content}{Introduction to Computer Programming}
-\newcommand{\examdate}{2023/11/30}
-\newcommand{\timelimit}{60 Minutes}
+\newcommand{\examdate}{2023/12/08}
+\newcommand{\timelimit}{Good Luck.}
 
 \pagestyle{headandfoot}
 \firstpageheader{}{}{}
@@ -48,7 +48,7 @@
     \bigskip
     \class -- \examnum \\ \content}}
     \author{Instructors: Themba Dube, Ibrahim Chehab}
-    \date{Duration: 1 hour\\ Aids Allowed: God Himself\\ \examdate}
+    \date{Duration: Good Luck.\\ Aids Allowed: God Himself.\\ \examdate}
     \maketitle
     \begin{center}
     \makebox[12cm]{\textbf{Name}:\ \hrulefill}
@@ -59,7 +59,7 @@
     % Hey copilot how do I make a square border around text?
     \begin{center}
     \fbox{\parbox{6.5in}{\textit{The University of Ibra and you, as a student, share a commitment to academic integrity. You are reminded that you may be charged with an academic offence for possessing any unauthorized aids during the writing of an exam. Clear, sealable, faraday bags have been provided for all mythical devices, including but not limited to: telepathic communication headsets, time machines, polygraph machines, magic wands, Miraculouses, and any other supernatural or futuristic devices that could potentially aid in unfair advantages during examinations. Please turn off all devices, seal them in the bag provided, and place the bag under your desk for the duration of the examination. You will not be able to touch the bag or its contents until the exam is over. If, during an exam, any of these items are found on your person or in the area of your desk other than in the clear, sealable, faraday bag, you may be charged with an academic offence. A typical penalty for an academic offence may cause you to do the hokey-pokey uncontrollably. \\
-    Please note, once this exam has begun, you \textbf{CANNOT} re-write it.}}}
+    Please note, once this exam has begun, you \textbf{CANNOT} undo the mental damange it will inflict.}}}
     \end{center}
 
     \bigskip
@@ -80,7 +80,7 @@
             \choice \texttt{type}
             \choice \texttt{bytes}
             \choice \texttt{Set}
-            \choice \texttt{set}
+            \choice \texttt{NoneType}
             \choice \texttt{None of the above}
         \end{choices}
 
@@ -101,6 +101,7 @@
         \choice 1
         \choice 2
         \choice 3
+        \choice An \texttt{Exception} of some kind is raised
     \end{choices}
 
     \question[2] \textbf{Code Tracing II} \\
@@ -140,25 +141,28 @@
     \question[2] \textbf{Code Tracing III} \\
     Consider the following Python function which operates on a list:
     \begin{lstlisting}[language=Python, style=mystyle]
-    def cursed_list_1(a: list, b: list) -> list:
-        if len(a) > len(b):
-            return [x for x in a if x not in b]
-        elif len(a) == len(b):
-            return [x for x in b if x not in a]
-        return []
+    def cursed_list_1(lst1: list, lst2: list, call: callable) -> list:
+        lst1 = [x for x in lst2[:1:-2]]
+        lst2 = [x for x in lst1[1::2]]
+        if lst1 == lst2:
+            return lst1
+        if len(lst1) > len(lst2):
+            cursed_list_2 = lambda x, y: [x for x in y[:1:-2]]
+        return call(lst1, lst2)
+        
+    def cursed_list_2(lst1: list, lst2: list, call: callable) -> list:
+        if len(lst1) >= (len(lst2)):
+            cursed_list_1 = lambda x, y, z: [x for x in y[3::2]]
+        return call(lst1, lst2, cursed_list_2)
     
-    def cursed_list_2(a: list, b: list) -> list:
-        a = cursed_list_1 if a else [x for x in a if x in b]
-        b = b if a else a
-        return a(b, [x for x in a if x not in b])
+    print(cursed_list_2([1, 2, 3, 4, 5][::-1], [1, 2, 3, 4, 5][:2:-2], cursed_list_1))
     
-    print(cursed_list_2([1, 2, 3][::-1], [2, 3, 4][:2:-3]))
     \end{lstlisting}
     What is the output of this code?
     \begin{choices}
-        \choice \texttt{[1, 2, 3]}
-        \choice \texttt{[1, 2, 3, 4]}
-        \choice \texttt{[1, 2, 3, 4, 5]}
+        \choice \texttt{[4, 2]}
+        \choice \texttt{[1, 3, 5]}
+        \choice \texttt{[2, 4, 3, 5]}
         \choice An \texttt{Exception} of some kind is raised
         \choice None of the above
     \end{choices}
@@ -250,8 +254,26 @@
     \section*{Part II: Short Answer}
     Answer each question to the best of your abilities. Partial marks will be awarded for partial answers. 
 
-    \question[5] 
-
+    \question[5] \textbf{Object-Oriented Programming} \\
+    Briefly explain the difference between a class and an object.
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \question[5] \textbf{Object-Oriented Programming} \\
+    Briefly explain what it means to be a \textit{mutable} vs. \textit{immutable} object.
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+    \question[5] \textbf{Regex} \\
+    Briefly explain what the following regular expression matches: \texttt{[a-zA-Z0-9]+} %TODO: Make a more cursed regex
+    \bigskip
+    \bigskip
+    \bigskip   
+    \bigskip
+    \question[5] \textbf{Regex} \\
+    Ibrahim is working on a new \texttt{UserContact} module for \texttt{TTBTrackr}. He needs a regex that will validate a phone number. The phone number must be in the format \texttt{xxx-xxx-xxxx}, where \texttt{x} is a digit between 0 and 9. Write a regex that will validate this phone number. Your regex should also validate the area code and should work regardless of hyphens being included. 
     \clearpage
     \section*{Part III: Long Answer}
     \setcounter{question}{0}
@@ -264,7 +286,7 @@
         \textbf{RESTRICTIONS:}
         \begin{itemize}
             \item You may \textbf{NOT} use \texttt{set}s
-            \item Your method \textbf{MUST} be $\mathcal{O}(n)$ time (i.e. linear time)
+            \item Your method \textbf{MUST} be $\mathcal{O}(n)$ time (i.e. linear time). Any answer that is not $\mathcal{O}(n)$ time will receive a mark of 0.
             \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
         \end{itemize}
     \end{center}
