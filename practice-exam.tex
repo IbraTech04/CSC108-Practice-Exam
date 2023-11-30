@@ -48,7 +48,7 @@
     \title{\Large \textbf{\university\\ \faculty\\
     \bigskip
     \class -- \examnum \\ \content}}
-    \author{Instructors: Themba Dube, Ibrahim Chehab}
+    \author{Instructors: Themba, Ibrahim}
     \date{Duration: Good Luck.\\ Aids Allowed: God Himself.\\ \examdate}
     \maketitle
     \begin{center}
@@ -250,7 +250,7 @@
         \choice UTM Victim is correct
     \end{choices}
     \textbf{Why:} \underline{\hspace{15cm}} \\
-    \textit{For full credit, if you selected "UTM Victim is correct", you must specify the \texttt{Exception} that is raised.} \underline{\hspace{15cm}}
+    \textit{For full credit, if you selected "UTM Victim is correct", you must specify the \texttt{Exception} that is raised and the error message.} \underline{\hspace{10cm}}
 
     %% long answer: 
     \setcounter{question}{0}
@@ -383,7 +383,7 @@ jtuwrdubvbywhrrcjyalhrnllfrnsaqelgpv
     \end{lstlisting}
 
     \clearpage
-    \question[10] \textbf{Malware Containment} \\
+    \question[10] \textbf{Malware Containment I} \\
     \texttt{Themba.java} is working on a secret CSC108 UltraSheet\texttrademark  Pro Max. To help keep this textbook online, he distributes it through Peer-to-Peer (P2P) file sharing. Unfortunately, an evil TA from TMU has intercepted the file and injected malware into it. Anyone who recieves the UltraSheet from the TA will be infected. Given: 
     \begin{itemize}
         \item The initial infected user
@@ -408,9 +408,10 @@ jtuwrdubvbywhrrcjyalhrnllfrnsaqelgpv
         Precondition: initial_infected is a string. user_map is a 
         dictionary mapping strings to lists of strings.
         """
-\end{lstlisting}
-
-
+    \end{lstlisting}
+    \clearpage
+    \question[10] \textbf{Malware Containment II} \\
+    \texttt{Themba.java} has caught wind of the rogue TA infecting his UltraSheet. He has decided to implement a new way to distribute the UltraSheet. Instead of sending all the parts of the textbook to each user, he will send each user a single part of the textbook. Each user will then send their part to another user. This process will repeat until all users have all parts of the textbook. Write an algorithm to determine whether an arbitrary starting point can result in having zero malware infections. 
     \end{questions}
 
     \clearpage
