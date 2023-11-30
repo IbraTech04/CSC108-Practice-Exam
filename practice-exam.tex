@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{listings} 
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in]{geometry}
 \usepackage{amsmath,amssymb}
@@ -60,7 +61,9 @@
     \begin{center}
     \fbox{\parbox{6.5in}{\textit{The University of Ibra and you, as a student, share a commitment to academic integrity. You are reminded that you may be charged with an academic offence for possessing any unauthorized aids during the writing of an exam. Clear, sealable, faraday bags have been provided for all mythical devices, including but not limited to: telepathic communication headsets, time machines, polygraph machines, magic wands, Miraculouses, and any other supernatural or futuristic devices that could potentially aid in unfair advantages during examinations. Please turn off all devices, seal them in the bag provided, and place the bag under your desk for the duration of the examination. You will not be able to touch the bag or its contents until the exam is over. If, during an exam, any of these items are found on your person or in the area of your desk other than in the clear, sealable, faraday bag, you may be charged with an academic offence. A typical penalty for an academic offence may cause you to do the hokey-pokey uncontrollably. \\
     Please note, once this exam has begun, you \textbf{CANNOT} undo the mental damange it will inflict.}}}
+
     \end{center}
+
 
     \bigskip
 
@@ -216,9 +219,10 @@
         \end{choices}
         \part[2] Assume this function is called on the following list: \texttt{[69, 420, 3.14159365, 474, 666]}. What is the output of this function, or the final state of the list? (Depending on your answer to part (a))
     \begin{choices}
+        \choice \texttt{[]}
         \choice \texttt{[69, 420, 3.14159365, 474, 666]}
         \choice \texttt{[3.14159365, 69, 420, 474, 666]}
-        \choice \texttt{[3.14159365, 69, 420, 474, 666, 69, 420, 474, 666]}
+        \choice \texttt{[666, 474, 420, 69, 3.14159365]}
         \choice{An \texttt{Exception} of some kind is raised}
         \choice None of the above
     \end{choices}
@@ -245,8 +249,8 @@
         \choice Nugget is correct
         \choice UTM Victim is correct
     \end{choices}
-    \textbf{Why:} \underline{\hspace{15cm}}
-
+    \textbf{Why:} \underline{\hspace{15cm}} \\
+    \textit{For full credit, if you selected "UTM Victim is correct", you must specify the \texttt{Exception} that is raised.} \underline{\hspace{15cm}}
 
     %% long answer: 
     \setcounter{question}{0}
@@ -285,7 +289,41 @@
     \textit{Note: You may recieve partial credit should you decide to show your work}
     \clearpage
     \question[10] \textbf{Code Tracing} \\
-    Refer back to the \texttt{scooby\_doo} function from \textbf{Code Tracing IV}. Consider the following code:
+    Refer back to the \texttt{scooby\_doo} function from \textbf{Code Tracing IV}. Explicitly state a precondition and postcondition for both \texttt{scooby\_doo} and \texttt{mystery}. You may assume that \texttt{arr} is a list of integers.
+    \bigskip
+    \bigskip
+    \bigskip   
+    \bigskip
+    
+    \question[10] \textbf{Code Tracing} \\
+    Patea stores his Bitcoin private key in a file on his computer. To stop people from stealing his Bitcoin, he encrypts the file using a password. Unfortunately, on a recent Discord call he leaked his encryption function: 
+    \begin{lstlisting}[language=Python, style=mystyle]
+from typing import TextIO
+
+def destroy_file(file: TextIO):
+    file_contents = file.readlines()
+    for i in range(len(file_contents)):
+        x = file_contents[i].strip()
+        new_x = ""
+        for z in range(len(x)):
+            new_x += chr((ord(x[z]) + z - ord('a')) % 26 + ord('a'))
+        file_contents[i] = new_x
+
+    with open("destroyed_file.txt", "w") as f:
+        f.writelines(file_contents)
+    \end{lstlisting}
+
+    If \texttt{destroyed\_file.txt} contains the following text:
+    \begin{lstlisting}[language=Python, style=mystyle]
+jtuwrdubvbywhrrcjyalhrnllfrnsaqelgpv
+    \end{lstlisting}
+    What is Patea's Bitcoin private key? If this encryption is not possible to reverse, explain why.
+
+    \clearpage
+
+    \begin{center}
+        \textbf{Extra space for Q7}\\        
+    \end{center}
     \clearpage
 
     \section*{Part III: Long Answer} 
@@ -315,8 +353,60 @@
     \end{lstlisting}
 
     \clearpage
-    \question[10] \textbf{The Secret} \\
-    \texttt{Ibra.Java} is hosting a secret MAT102 lecture. This lecture is so secret. that he only tells one student about it. However, his student is 
+    \question[10] \textbf{The Happy Numer} \\
+    Let $n$ be a positive integer. We say that $n$ is \textbf{happy} iff replacing $n$ with the sum of the squares of its digits, and repeating this process, eventually leads to the number 1 within 7 iterations. For example, 19 is happy because:
+    \begin{align*}
+        19 &\rightarrow 1^2 + 9^2 = 82 \\
+        82 &\rightarrow 8^2 + 2^2 = 68 \\
+        68 &\rightarrow 6^2 + 8^2 = 100 \\
+        100 &\rightarrow 1^2 + 0^2 + 0^2 = 1
+    \end{align*}
+    Write an algorithm to determine whether a given number $n$ is happy or not.
+
+    \begin{center}
+        \textbf{RESTRICTIONS:}
+        \begin{itemize}
+            \item For full marks, your solution must be $\mathcal{O}(1)$ time (i.e. constant time). Any answer that is not $\mathcal{O}(1)$ time will receive a mark of 0.
+            \item For full marks, your code must be less than 4 lines. Any answer that is more than 4 lines will receive a mark of 0.
+        \end{itemize}
+        \textit{Hint: You may want to use List Comprehensions.}
+        \textit{No, I don't care that it wasn't taught in CSC108}
+    \end{center}
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def is_happy(n: int) -> bool:
+        """
+        Given a number, returns whether or not the number is happy.
+        Precondition: n is a positive integer.
+        """
+    \end{lstlisting}
+
+    \clearpage
+    \question[10] \textbf{Malware Containment} \\
+    \texttt{Themba.java} is working on a secret CSC108 UltraSheet\texttrademark  Pro Max. To help keep this textbook online, he distributes it through Peer-to-Peer (P2P) file sharing. Unfortunately, an evil TA from TMU has intercepted the file and injected malware into it. Anyone who recieves the UltraSheet from the TA will be infected. Given: 
+    \begin{itemize}
+        \item The initial infected user
+        \item A map of which user got the UltraSheet from which other user
+    \end{itemize}
+    Write an algorithm to determine the total number of infected users.
+    \begin{center}
+        \textbf{RESTRICTIONS:}
+        \begin{itemize}
+            \item For full marks, your solution must be $\mathcal{O}(n^2)$ time (i.e. quadratic time)
+            \item For full marks, your code must be less than 10 lines. Any answer that is more than 10 lines will receive a mark of 0.
+            \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
+        \end{itemize}
+    \end{center}
+    \begin{lstlisting}[language=Python, style=mystyle]
+    def num_infected(initial_infected: str, 
+                     user_map: dict[str, list[str]]) -> int:
+        """
+        Given the initial infected user and a map of which user got the 
+        UltraSheet from which other user, returns the total number of 
+        infected users.
+        Precondition: initial_infected is a string. user_map is a 
+        dictionary mapping strings to lists of strings.
+        """
+\end{lstlisting}
 
 
     \end{questions}
@@ -331,5 +421,12 @@
     \begin{center}
         \textbf{Rough Work}\\
         \textit{This page will NOT be marked. You may use this page for rough work.}
+    \end{center}
+    \clearpage
+    % Add the ascii.jpg image to its own page and title it "ASCII Reference Sheet"
+    \begin{center}
+        \textbf{ASCII Reference Sheet}
+        
+        \includegraphics[width=0.8\textheight, angle=270]{ascii.jpg}
     \end{center}
 \end{document}
