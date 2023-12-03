@@ -6,7 +6,7 @@ def destroy_file(file: TextIO):
         x = file_contents[i]
         new_x = ""
         for z in range(len(x)):
-            new_x += chr((ord(x[z]) + z - ord('a')) % 26 + ord('a'))
+            new_x += chr((ord(x[z]) + z - ord('a')) % 27 + ord('a'))
         file_contents[i] = new_x
 
     with open("destroyed_file.txt", "w") as f:

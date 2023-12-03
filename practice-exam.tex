@@ -1,4 +1,4 @@
-\documentclass[letterpaper,12pt,addpoints]{exam}
+\documentclass[letterpaper,13pt,addpoints]{exam}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{listings}
@@ -179,7 +179,7 @@ Answer each question to the best of your abilities. Each question has exactly on
         \choice An \texttt{Exception} of some kind is raised
         \choice None of the above
     \end{choices}
-
+    \pagebreak
     \question[4] \textbf{Code Tracing IV} \\
     \texttt{Ibra.java} works on a startup called TTBTrackr. Unfortunately, his code was leaked by a rogue employee, ibra.himo. Fortunately for IbraSoft\texttrademark, all their code is obfuscated. Consider the following Python method extracted from the leaked code:
     \begin{lstlisting}[language=Python, style=mystyle]
@@ -310,7 +310,46 @@ def foo(x: int):
         \choice $\mathcal{O}(n\log n)$
         \choice $\mathcal{O}(\log n)$
         \choice $\mathcal{O}(1)$
-    \end{choices}/
+    \end{choices}
+    \pagebreak
+    \question[5] \textbf{Time Complexity (Harder!)} \\
+    Consider the following Python function:
+    \begin{lstlisting}[language=Python, style=mystyle]
+def foo(x: int):
+    n = x
+    for i in range(n):
+        if n <= 50:
+            for j in range(n):
+                x += 1
+        if n <= 100:
+            for j in range(n):
+                if n <= 75:
+                    for k in range(n):
+                        x += 1
+    \end{lstlisting}
+    What is the worst-case time complexity of this function?
+    \begin{choices}
+        \choice $\mathcal{O}(n)$
+        \choice $\mathcal{O}(n^2)$
+        \choice $\mathcal{O}(n^3)$
+        \choice $\mathcal{O}(\log n)$
+        \choice $\mathcal{O}(1)$
+    \end{choices}
+    \question[5] \textbf{Time Complexity (Hardest!)} \\
+    In CSC148 you will learn about time complexities of inserting into a list. Here is a brief summary: \\
+    \textit{Inserting into a list requires all the elements after the insertion point to be moved over by one.} \\
+    With this in mind, what is the best-case and worst-case time complexity of inserting into a list at index $n$?
+    \begin{choices}
+        \choice Best-case: $\mathcal{O}(1)$, Worst-case: $\mathcal{O}(n)$
+        \choice Best-case: $\mathcal{O}(n)$, Worst-case: $\mathcal{O}(1)$
+        \choice Best-case: $\mathcal{O}(n)$, Worst-case: $\mathcal{O}(n)$
+        \choice Best-case: $\mathcal{O}(1)$, Worst-case: $\mathcal{O}(1)$
+    \end{choices}
+    When do the best-case and worst-case time complexities occur? \\
+    \textbf{Best-case:} \underline{\hspace{15cm}} \\
+    \bigskip
+    \textbf{Worst-case:} \underline{\hspace{15cm}} \\
+
     %% long answer: 
     \setcounter{question}{0}
     \clearpage
@@ -365,7 +404,7 @@ def destroy_file(file: TextIO):
         x = file_contents[i].strip()
         new_x = ""
         for z in range(len(x)):
-            new_x += chr((ord(x[z]) + z - ord('a')) % 26 + ord('a'))
+            new_x += chr((ord(x[z]) + z - ord('a')) % 27 + ord('a'))
         file_contents[i] = new_x
 
     with open("destroyed_file.txt", "w") as f:
@@ -374,7 +413,7 @@ def destroy_file(file: TextIO):
 
     If \texttt{destroyed\_file.txt} contains the following text:
     \begin{lstlisting}[language=Python, style=mystyle]
-jtuwrdubvbywhrrcjyalhrnllfrnsaqelgpv
+ptuwucuayaywgrreiy{kjqmkkeuts{telgpv
     \end{lstlisting}
     What is Patea's Bitcoin private key? If this encryption is not possible to
     reverse, explain why.
@@ -489,6 +528,17 @@ ElectricVehicle.drive(toyota, 100)
         \end{itemize}
     \end{parts}
 
+    \question[10] \textbf{Sorting Algorithms} \\
+    Recall our definitions of Selection Sort, Insertion Sort, and Bubble Sort. 
+    \begin{parts}
+        \part[3] Explain the difference between the three algorithms.
+        \bigskip \bigskip \bigskip \bigskip
+        \part[3] Which of the three algorithms is the fastest? Which is the slowest?
+        \bigskip \bigskip \bigskip \bigskip
+        \part[4] Consider the following list: \texttt{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}.
+        Which of the three algorithms would take the longest to sort this list? Which
+    \end{parts}
+
     \clearpage
 
     \section*{Part III: Long Answer}
@@ -571,17 +621,17 @@ ElectricVehicle.drive(toyota, 100)
     \end{center}
     \begin{lstlisting}[language=Python, style=mystyle]
     def num_infected(initial_infected: str, 
-                     user_map: dict[str, list[str]]) -> int:
+                     user_map: dict[str, str]) -> int:
         """
         Given the initial infected user and a map of which user got the 
         UltraSheet from which other user, returns the total number of 
         infected users.
         Precondition: initial_infected is a string. user_map is a 
-        dictionary mapping strings to lists of strings.
+        dictionary mapping each user to who they get their UltraSheet from
         """
     \end{lstlisting}
     \clearpage
-    \question[10] \textbf{Ibraimo's Eggs} \\
+    \question[10] \textbf{Ibrahimo's Eggs} \\
     After getting fired from \textit{IbraSoft}, Ibrahimo takes on Uber Eats as a side hustle. His first mission is to deliver eggs to Melon. Unfortunately, Ibrahimo is a terrible driver and crashes, breaking some of the eggs. Your job is to help Ibrahimo determine how many eggs he has left. \\
     \begin{center}
         \textbf{RESTRICTIONS:}
@@ -606,6 +656,78 @@ def num_eggs(egg_list: list[int], broken_egg_val: int) -> int:
     """
     \end{lstlisting}
     \clearpage
+    \question[10] \textbf{Sorting Algorithms} \\
+    Implement an in-place (i.e. Mutating) version of Insertion Sort. Your method should sort the list in ascending order. You may assume that the list is non-empty and contains only integers.
+    \begin{center}
+        \textbf{RESTRICTIONS:}
+        \begin{itemize}
+            \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
+            \item You may \textbf{NOT} create any helper methods, new objects, or new variables.
+                  You may only use the variables provided to you.
+            \item You may \textbf{NOT} use any built-in functions or methods, except for
+                  \texttt{len}
+        \end{itemize}
+    \end{center}
+    \begin{lstlisting}[language=Python, style=mystyle]
+def insertion_sort(lst: list[int]) -> None:
+    """
+    Given a list of integers, sorts the list in ascending order.
+    Precondition: lst is a list of integers.
+    This method MUST be in-place (i.e. mutating).
+    Note: you may not need all the parameters variables
+    given to you.
+    """
+    a, b, c = None, None, None
+    \end{lstlisting}
+\clearpage
+\question[10] \textbf{Sorting Algorithms} \\
+Implement an in-place variant of Selection Sort. Your method should sort the list in ascending order. You may assume that the list is non-empty and contains only integers.
+\begin{center}
+    \textbf{RESTRICTIONS:}
+    \begin{itemize}
+        \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
+        \item You may \textbf{NOT} create any helper methods, new objects, or new variables.
+              You may only use the variables provided to you.
+        \item You may \textbf{NOT} use any built-in functions or methods, except for
+              \texttt{len}
+    \end{itemize}
+\end{center}
+\begin{lstlisting}[language=Python, style=mystyle]
+def selection_sort(lst: list[int]) -> None:
+    """
+    Given a list of integers, sorts the list in ascending order.
+    Precondition: lst is a list of integers.
+    This method MUST be in-place (i.e. mutating).
+    Note: you may not need all the parameters variables
+    given to you.
+    """
+    a, b, c = None, None, None
+\end{lstlisting}
+\clearpage
+\textbf{The Final Question} \\
+Let $L$ be a list. We say that $L$ is an IbraList\texttrademark if and only if $L$ has at least 2 elements in \textit{Perfect Order} (i.e: Increases until a maximum, then decreases until a minimum). For example, the following lists are IbraLists:
+\begin{itemize}
+    \item \texttt{[1, 2, 3, 4, 5, 4, 3, 2, 1]}
+    \item \texttt{[1, 2, 3, 4, 5, 6, 7, 8, 9, 8]}
+\end{itemize}
+Write an algorithm to determine whether a given list is an IbraList\texttrademark. You may assume that the list is non-empty and contains only integers.
+\begin{center}
+    \textbf{RESTRICTIONS:}
+    \begin{itemize}
+        \item You may \textbf{NOT} use concepts taught outside of the scope of CSC108
+        \item You may \textbf{NOT} use any built-in functions or methods, except for
+              \texttt{len}
+        \item Your method \textbf{MUST} be $\mathcal{O}(n)$ time (i.e. linear time). Any
+              answer that is not $\mathcal{O}(n)$ time will receive a mark of 0.
+    \end{itemize}
+    \begin{lstlisting}[language=Python, style=mystyle]
+def is_ibra_list(L: list[int]) -> bool:
+    """
+    Given a list, returns whether or not the list is an IbraList.
+    Precondition: L is a list of integers.
+    """
+\end{lstlisting}
+\end{center}
 \end{questions}
 
 \clearpage
