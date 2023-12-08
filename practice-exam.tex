@@ -32,7 +32,7 @@
 \newcommand{\class}{CSC108H5 F}
 \newcommand{\examnum}{(Not) Penultimate Examination}
 \newcommand{\content}{Introduction to Computer Programming}
-\newcommand{\examdate}{2023/12/08}
+\newcommand{\examdate}{2023/12/03}
 \newcommand{\timelimit}{Good Luck.}
 
 \pagestyle{headandfoot}
@@ -298,10 +298,11 @@ Answer each question to the best of your abilities. Each question has exactly on
     \begin{lstlisting}[language=Python, style=mystyle]
 def foo(x: int):
     n = x
-    while n >= 0:
-        for i in range(15):
-            x += 5
-        n//2
+    for i in range(x):
+        while n >= 0:
+            for i in range(15):
+                x += 5
+            n//=2
     \end{lstlisting}
     What is the worst-case time complexity of this function?
     \begin{choices}
@@ -704,7 +705,7 @@ def selection_sort(lst: list[int]) -> None:
 \end{lstlisting}
 \clearpage
 \question[10] \textbf{The Final Question} \\
-Let $L$ be a list. We say that $L$ is an IbraList\texttrademark if and only if $L$ has at least 2 elements in \textit{Perfect Order} (i.e: Increases until a maximum, then decreases until a minimum). For example, the following lists are IbraLists:
+Let $L$ be a list. We say that $L$ is an IbraList\texttrademark if and only if $L$ has all elements in \textit{Perfect Order} (i.e: Increases until a maximum, then decreases until a minimum). For example, the following lists are IbraLists:
 \begin{itemize}
     \item \texttt{[1, 2, 3, 4, 5, 4, 3, 2, 1]}
     \item \texttt{[1, 2, 3, 4, 5, 6, 7, 8, 9, 8]}
